@@ -1,4 +1,4 @@
-class HttpRequestParser:
+class HttpRequest:
     '''
       `HttpRequestParser` is a simple HTTP Request Parser.
       We parse the incoming raw data into requests, which we use
