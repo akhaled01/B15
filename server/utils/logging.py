@@ -1,23 +1,41 @@
-import logging
+import datetime
+class Logger:
+    def __init__(self, filename, level='INFO'):
+        self.level = self._get_level(level)
+        self.filename = filename
+        self.format = '%(asctime)s - %(levelname)s - %(message)s'
 
-# Create a logger
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+    def _get_level(self, level):
+        levels = {
+            'DEBUG': 1,
+            'INFO': 2,
+            'WARNING': 3,
+            'ERROR': 4,
+            'CRITICAL': 5
+        }
+        return levels.get(level.upper(), 2)
 
-# Create a file handler
-file_handler = logging.FileHandler('app.log')
-file_handler.setLevel(logging.INFO)
+    def log(self, level, message):
+        if self._get_level(level) >= self.level:
+            now = datetime.datetime.now()
+            formatted = self.format.replace(
+                '%(asctime)s', now.strftime('%Y-%m-%d %H:%M:%S'))
+            formatted = formatted.replace('%(levelname)s', level.upper())
+            formatted = formatted.replace('%(message)s', message)
+            with open(self.filename, 'a') as f:
+                f.write(formatted + '\n')
 
-# Create a console handler
-console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.INFO)
+    def debug(self, message):
+        self.log('DEBUG', message)
 
-# Create a formatter and add it to the handlers
-formatter = logging.Formatter(
-    '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-file_handler.setFormatter(formatter)
-console_handler.setFormatter(formatter)
+    def info(self, message):
+        self.log('INFO', message)
 
-# Add the handlers to the logger
-logger.addHandler(file_handler)
-logger.addHandler(console_handler)
+    def warning(self, message):
+        self.log('WARNING', message)
+
+    def error(self, message):
+        self.log('ERROR', message)
+
+    def critical(self, message):
+        self.log('CRITICAL', message)
