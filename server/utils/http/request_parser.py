@@ -2,7 +2,7 @@ class HttpRequestParser:
     '''
       `HttpRequestParser` is a simple HTTP Request Parser.
       We parse the incoming raw data into requests, which we use
-      to process the client further.\n
+      to process the client further.
 
       The hypertext transport protocol is a standardized way of
       communicating over the www. SInce this TCP server is HTTP compliant, any client (eg: `python`, `JS`, `Go`, `curl`)
