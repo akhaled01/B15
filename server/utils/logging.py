@@ -1,7 +1,6 @@
 from rich.console import Console
 import datetime
 
-
 class Logger:
     def __init__(self, filename, level='INFO'):
         self.level = self._get_level(level)
@@ -56,6 +55,7 @@ class Logger:
 
     def critical(self, message):
         self.log('CRITICAL', message)
+
 
 
 server_logger = Logger('log/server.log', 'INFO')
