@@ -1,9 +1,13 @@
+from rich.console import Console
 import datetime
+
+
 class Logger:
     def __init__(self, filename, level='INFO'):
         self.level = self._get_level(level)
         self.filename = filename
         self.format = '%(asctime)s - %(levelname)s - %(message)s'
+        self.console = Console()
 
     def _get_level(self, level):
         levels = {
@@ -22,8 +26,21 @@ class Logger:
                 '%(asctime)s', now.strftime('%Y-%m-%d %H:%M:%S'))
             formatted = formatted.replace('%(levelname)s', level.upper())
             formatted = formatted.replace('%(message)s', message)
-            with open(self.filename, 'a') as f:
+            with open(self.filename, 'w') as f:
                 f.write(formatted + '\n')
+            style = ""
+            match level:
+                case 'DEBUG':
+                    style = "bold blue"
+                case 'INFO':
+                    style = "bold green"
+                case 'WARNING':
+                    style = "bold yellow"
+                case 'ERROR':
+                    style = "bold orange"
+                case 'CRITICAL':
+                    style = "bold red"
+            self.console.print(formatted, style=style)
 
     def debug(self, message):
         self.log('DEBUG', message)
@@ -39,3 +56,7 @@ class Logger:
 
     def critical(self, message):
         self.log('CRITICAL', message)
+
+
+server_logger = Logger('log/server.log', 'INFO')
+request_logger = Logger('log/request.log', 'INFO')
