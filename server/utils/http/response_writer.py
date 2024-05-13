@@ -7,6 +7,7 @@ class HTTPResponseWriter:
     HTTP responses back to the client. It allows setting the status code, adding
     headers, and setting the response content.
     """
+
     def __init__(self, client_socket):
         self.client_socket = client_socket
         self.status_code = 200
@@ -36,13 +37,17 @@ class HTTPResponseWriter:
         for key, value in self.headers.items():
             response += f"{key}: {value}\r\n"
         response += "\r\n"
-        response += self.content.decode()  
-        self.client_socket.sendall(response.encode('ascii'))
+        response += self.content.decode("utf-8")
+        self.client_socket.sendall(response.encode('utf-8'))
 
     def _get_status_message(self, code):
         # Maps status codes to messages (add more as needed)
         messages = {
             200: "OK",
             404: "Not Found",
+            400: "Bad Request",
+            500: "Internal Server Error",
+            405: "Method Not Allowed",
+            418: "I'm a teapot",
         }
         return messages.get(code, "Unknown Status Code")

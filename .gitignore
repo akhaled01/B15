@@ -160,4 +160,9 @@ cython_debug/
 #.idea/
 
 proj_env
+
+# Ignore private keys and certificates
+*.pem
+*.key
+
 myenv
