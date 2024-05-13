@@ -31,7 +31,8 @@ def HandleClient(client_socket: socket.socket, server_socket: socket.socket):
         response_writer.set_status_code(
             404) if response_data["message"] == "Not found" else response_writer.set_status_code(
             400) if response_data["message"] == "bad request" else response_writer.set_status_code(
-                200)
+                418) if response_data["message"] == "I like tea" else response_writer.set_status_code(
+                    200)
         response_writer.add_header("Content-Type", "application/json")
         response_writer.set_content(json.dumps(response_data))
         response_writer.send_response()

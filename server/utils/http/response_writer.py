@@ -37,7 +37,7 @@ class HTTPResponseWriter:
         for key, value in self.headers.items():
             response += f"{key}: {value}\r\n"
         response += "\r\n"
-        response += self.content.decode()
+        response += self.content.decode("utf-8")
         self.client_socket.sendall(response.encode('utf-8'))
 
     def _get_status_message(self, code):
@@ -47,6 +47,7 @@ class HTTPResponseWriter:
             404: "Not Found",
             400: "Bad Request",
             500: "Internal Server Error",
-            405: "Method Not Allowed"
+            405: "Method Not Allowed",
+            418: "I'm a teapot",
         }
         return messages.get(code, "Unknown Status Code")

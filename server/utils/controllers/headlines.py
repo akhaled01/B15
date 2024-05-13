@@ -24,21 +24,20 @@ def GetHeadlines(keywords = [], country="", category="") -> dict:
         url_payload.append(f'q={"&".join(keywords)}')
     if country and country != "":
         url_payload.append(f"country={country}")
-    if country and category != "":
+    if category and category != "":
         url_payload.append(f"category={category}")
 
     a = "&".join(url_payload) if len(url_payload) > 0 else ""
     print(a)
 
     try:
-        url = f'https://newsapi.org/v2/everything?{a}' if a != "" else f'https://newsapi.org/v2/everything?q=bitcoin'
+        url = f'https://newsapi.org/v2/top-headlines?{a}' if a != "" else f'https://newsapi.org/v2/everything?country=us'
         print(url)
         data = requests.get(url, headers={
             'Accept': 'application/json',
             'X-Api-Key': os.getenv('API_KEY')
         })
         mdata = data.json()
-        print(mdata)
         if mdata.get('status') != 'ok':
             print(data.status_code)
             raise Exception("NewsAPIException", mdata.get(

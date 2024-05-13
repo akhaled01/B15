@@ -18,4 +18,6 @@ def Mux(req) -> dict:
         return {"message": GetHeadlines(request_data.get("keywords"),
                                         request_data.get("country"),
                                         request_data.get("category"))}
+    if req.get_url() == "/tea":
+        return {"message": "I like tea"}
     return {"message": "Not found"}
