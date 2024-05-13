@@ -1,26 +1,43 @@
-from utils.logging import server_logger
-from utils.handler import handle_client
-import socket
+from src.utils.server_logging import server_logger
+from src.handler import HandleClient
+from rich.traceback import install
+from dotenv import load_dotenv
 import threading
+import socket
 import sys
 
-HOST = '127.0.0.1'
+load_dotenv()  # load the .env file for API key
+install()  # pretty print errors
+
+# run on ip if given as CLI argument, else localhost
+HOST = sys.argv[1] if len(sys.argv) > 1 else '127.0.0.1'
 PORT = 9090
 
-server_logger.info(f"Server started at {HOST}:{PORT}")
-
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind((HOST, PORT))
-server_socket.listen()
+try:
+    server_socket.bind((HOST, PORT))
+except OSError:
+    '''
+      TCP sockets sometimes dont shutdown correctly.
+      This is a workaround to kill the process and the terminal.
+    '''
+    server_logger.error(
+        "please kill the process and the teriminal and restart server")
 
+server_socket.listen()  # listen for an infinite amt of clients
+server_logger.info(f"Server started at {HOST}:{PORT}")
 
 try:
     while True:
         client_conn, address = server_socket.accept()
         server_logger.info(f"Accepted connection from {address}")
         client_thread = threading.Thread(
-            target=handle_client, args=(client_conn,))
+            target=HandleClient, args=(client_conn, server_socket))
         client_thread.start()
+        client_thread.join()
+        client_conn.close()
 except KeyboardInterrupt:
-    server_logger.info(f"Server ended")
+    server_logger.info(f"Server stopped")
+    server_socket.shutdown(2)
+    server_socket.close()
     sys.exit(0)

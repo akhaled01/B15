@@ -28,7 +28,7 @@ class HttpRequest:
 
         # Parse headers (key-value pairs)
         for line in lines[1:]:
-            if line:
+            if line and ":" in line:
                 header_key, header_value = line.split(":", 1)
                 self.headers[header_key.strip()] = header_value.strip()
 
