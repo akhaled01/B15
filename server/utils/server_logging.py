@@ -25,7 +25,7 @@ class Logger:
                 '%(asctime)s', now.strftime('%Y-%m-%d %H:%M:%S'))
             formatted = formatted.replace('%(levelname)s', level.upper())
             formatted = formatted.replace('%(message)s', message)
-            with open(self.filename, 'w') as f:
+            with open(self.filename, 'a') as f:
                 f.write(formatted + '\n')
             style = ""
             match level:
@@ -36,7 +36,7 @@ class Logger:
                 case 'WARNING':
                     style = "bold yellow"
                 case 'ERROR':
-                    style = "bold orange"
+                    style = "bold white"
                 case 'CRITICAL':
                     style = "bold red"
             self.console.print(formatted, style=style)
@@ -57,6 +57,4 @@ class Logger:
         self.log('CRITICAL', message)
 
 
-
 server_logger = Logger('log/server.log', 'INFO')
-request_logger = Logger('log/request.log', 'INFO')
