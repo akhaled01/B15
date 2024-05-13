@@ -1,6 +1,6 @@
-from utils.http.response_writer import HTTPResponseWriter
-from utils.http.request_parser import HttpRequest
-from utils.http.mux import Mux
+from src.http.response_writer import HTTPResponseWriter
+from src.http.request_parser import HttpRequest
+from src.http.mux import Mux
 from .server_logging import server_logger
 import json
 import socket

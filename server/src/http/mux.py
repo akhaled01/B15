@@ -1,4 +1,4 @@
-from utils.controllers.headlines import GetHeadlines
+from src.controllers.headlines import GetHeadlines
 import json
 
 
@@ -11,13 +11,13 @@ def Mux(req) -> dict:
     '''
     if req.get_url() == "/":
         return {"message": "Hello!"}
-    if req.get_url() == "/headlines":
+    elif req.get_url() == "/headlines":
         if not req.get_data():
             return {"message": "bad request"}
         request_data = json.loads(req.get_data())
         return {"message": GetHeadlines(request_data.get("keywords"),
                                         request_data.get("country"),
                                         request_data.get("category"))}
-    if req.get_url() == "/tea":
+    elif req.get_url() == "/tea":
         return {"message": "I like tea"}
     return {"message": "Not found"}
