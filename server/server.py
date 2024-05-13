@@ -1,26 +1,30 @@
-from utils.server_logging import server_logger
-from utils.kill import Kill9090
-from dotenv import load_dotenv
-from utils.handler import HandleClient
+from src.utils.server_logging import server_logger
+from src.handler import HandleClient
 from rich.traceback import install
-import socket
+from dotenv import load_dotenv
 import threading
+import socket
 import sys
 
-load_dotenv() # load the .env file 
-install()
+load_dotenv()  # load the .env file for API key
+install()  # pretty print errors
 
-HOST = '127.0.0.1'
+# run on ip if given as CLI argument, else localhost
+HOST = sys.argv[1] if len(sys.argv) > 1 else '127.0.0.1'
 PORT = 9090
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 try:
-  server_socket.bind((HOST, PORT))
+    server_socket.bind((HOST, PORT))
 except OSError:
-  Kill9090()
+    '''
+      TCP sockets sometimes dont shutdown correctly.
+      This is a workaround to kill the process and the terminal.
+    '''
+    server_logger.error(
+        "please kill the process and the teriminal and restart server")
 
-server_socket.listen()
-
+server_socket.listen()  # listen for an infinite amt of clients
 server_logger.info(f"Server started at {HOST}:{PORT}")
 
 try:
