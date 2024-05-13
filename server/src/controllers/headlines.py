@@ -1,9 +1,9 @@
-from ..server_logging import server_logger
+from ..utils.server_logging import server_logger
 import requests
 import os
 
 
-def GetHeadlines(keywords = [], country="", category="") -> dict:
+def GetHeadlines(keywords: list[str], country: str, category: str) -> dict:
     """Fetch headlines by keywords.
 
       Parameters:
@@ -27,22 +27,25 @@ def GetHeadlines(keywords = [], country="", category="") -> dict:
     if category and category != "":
         url_payload.append(f"category={category}")
 
-    a = "&".join(url_payload) if len(url_payload) > 0 else ""
-    print(a)
+    parsed_string_payload = "&".join(
+        url_payload) if len(url_payload) > 0 else ""
 
     try:
-        url = f'https://newsapi.org/v2/top-headlines?{a}' if a != "" else f'https://newsapi.org/v2/everything?country=us'
-        print(url)
+        url = f'https://newsapi.org/v2/top-headlines?{parsed_string_payload}' if parsed_string_payload != "" else f'https://newsapi.org/v2/everything?country=us'
         data = requests.get(url, headers={
             'Accept': 'application/json',
             'X-Api-Key': os.getenv('API_KEY')
         })
-        mdata = data.json()
-        if mdata.get('status') != 'ok':
+
+        main_data = data.json()
+
+        if main_data.get('status') != 'ok':
             print(data.status_code)
-            raise Exception("NewsAPIException", mdata.get(
-                'code'), mdata.get('message'))
-        return mdata['articles'][0:16]  # limit to 15 results
+            raise Exception("NewsAPIException", main_data.get(
+                'code'), main_data.get('message'))
+
+        return main_data['articles'][0:16]  # limit to 15 results
+
     except Exception as e:
         server_logger.error("error fetching headlines")
-        print(e)
+        server_logger.print_exception(e)
