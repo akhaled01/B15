@@ -30,7 +30,6 @@ server_logger.info(f"Server started at {HOST}:{PORT}")
 try:
     while True:
         client_conn, address = server_socket.accept()
-        server_logger.info(f"Accepted connection from {address}")
         client_thread = threading.Thread(
             target=HandleClient, args=(client_conn, server_socket))
         client_thread.start()

@@ -31,9 +31,9 @@ class Logger:
             style = ""
             match level:
                 case 'DEBUG':
-                    style = "bold blue"
-                case 'INFO':
                     style = "bold green"
+                case 'INFO':
+                    style = "bold blue"
                 case 'WARNING':
                     style = "bold yellow"
                 case 'ERROR':

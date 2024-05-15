@@ -1,4 +1,12 @@
+certifi==2024.2.2
+charset-normalizer==3.3.2
+idna==3.7
 markdown-it-py==3.0.0
 mdurl==0.1.2
+newsapi-python==0.2.7
+psutil==5.9.8
 Pygments==2.18.0
+python-dotenv==1.0.1
+requests==2.31.0
 rich==13.7.1
+urllib3==1.25.8

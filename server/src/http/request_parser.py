@@ -1,6 +1,6 @@
 class HttpRequest:
     '''
-      `HttpRequestParser` is a simple HTTP Request Parser.
+      `HttpRequest` is a simple HTTP Request Parser.
       We parse the incoming raw data into requests, which we use
       to process the client further.
 
