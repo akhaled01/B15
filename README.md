@@ -13,7 +13,7 @@ B15 is a HTTP compliant TCP socket server and client. The server can accept any 
     - [The server script](#the-server-script)
     - [The client script](#the-client-script)
   - [Authors](#authors)
-    - [Group B15 - Course ITNE352 - Section 2](#group-b15---course-itne352---section-2)
+          - [Group B15 - Course ITNE352 - Section 2](#group-b15---course-itne352---section-2)
 
 ## Running the project
 
@@ -60,12 +60,9 @@ There are mainly two scripts, but they use extensive utilities from the `utils` 
 
 - `client.py`: This is the client script that is responsible for sending HTTP requests to the server.
 
-> [!WARNING]
-> Still under dev!
-
 ## Authors
 
-### Group B15 - Course ITNE352 - Section 2
+###### Group B15 - Course ITNE352 - Section 2
 
 1. Abdulrahman Khaled Idrees - 202200729
-2. Yousef Reja
+2. Yousif Raja Salem - 202109958
