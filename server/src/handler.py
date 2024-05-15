@@ -1,8 +1,8 @@
 from src.http.response_writer import HTTPResponseWriter
 from src.http.request_parser import HttpRequest
 from .utils.server_logging import server_logger
+from .utils.client_logging import LogClientRequest, LogClientConn
 from src.http.mux import Router
-from datetime import datetime
 import threading
 import socket
 import json
@@ -27,7 +27,9 @@ def HandleClient(client_socket: socket.socket, server_socket: socket.socket):
         request = HttpRequest()
         request.parse_request(raw_data.decode('utf-8'))
 
-        response_data = Router(request)  # route the request and get the result
+        LogClientConn(request)
+
+        response_data = Router(request)
 
         response_writer = HTTPResponseWriter(client_socket)
         match response_data["message"]:
@@ -42,18 +44,11 @@ def HandleClient(client_socket: socket.socket, server_socket: socket.socket):
 
         response_writer.add_header("Content-Type", "application/json")
         response_writer.set_content(json.dumps(response_data))
-
-        with open(f"log/json/B15_{json.loads(request.get_data()).get('client_name')}_{json.loads(request.get_data()).get('option')}_{threading.current_thread().getName()}.json", "w") as f:
-            f.write(json.dumps({
-                "client_name": json.loads(request.get_data()).get("client_name"),
-                "option": json.loads(request.get_data()).get("option"),
-                "request": request.get_data(),
-                "response": response_data,
-                "response_status": str(response_writer.status_code) + " " + response_writer._get_status_message(response_writer.status_code),
-                "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            }))
-
         response_writer.send_response()
+
+        LogClientRequest(
+            request=request, response_data=response_data, response_writer=response_writer)
+
     except Exception as e:
         response_writer.set_status_code(500)
         response_writer.send_response()
