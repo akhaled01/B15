@@ -9,8 +9,8 @@ import sys
 load_dotenv()  # load the .env file for API key
 install()  # pretty print errors
 
-# run on ip if given as CLI argument, else localhost
-HOST = sys.argv[1] if len(sys.argv) > 1 else '127.0.0.1'
+# Expose ip interface if given as CLI argument, else localhost
+HOST = sys.argv[1] if len(sys.argv) > 1 else '0.0.0.0'
 PORT = 9090
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -19,13 +19,15 @@ try:
 except OSError:
     '''
       TCP sockets sometimes dont shutdown correctly.
+      This causes them to continue to listen for connections
+      on a closed port.
       This is a workaround to kill the process and the terminal.
     '''
     server_logger.error(
         "please kill the process and the teriminal and restart server")
 
 server_socket.listen()  # listen for an infinite amt of clients
-server_logger.info(f"Server started at {HOST}:{PORT}")
+server_logger.info(f"listening and serving on {HOST}:{PORT}")
 
 try:
     while True:
