@@ -27,7 +27,7 @@ def HandleClient(client_socket: socket.socket, server_socket: socket.socket):
         request = HttpRequest()
         request.parse_request(raw_data.decode('utf-8'))
 
-        LogClientConn(request)
+        # LogClientConn(request)
 
         response_data = Router(request)
 
@@ -46,8 +46,8 @@ def HandleClient(client_socket: socket.socket, server_socket: socket.socket):
         response_writer.set_content(json.dumps(response_data))
         response_writer.send_response()
 
-        LogClientRequest(
-            request=request, response_data=response_data, response_writer=response_writer)
+        # LogClientRequest(
+        #     request=request, response_data=response_data, response_writer=response_writer)
 
     except Exception as e:
         response_writer.set_status_code(500)

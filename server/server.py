@@ -10,7 +10,7 @@ load_dotenv()  # load the .env file for API key
 install()  # pretty print errors
 
 # Expose ip interface if given as CLI argument, else localhost
-HOST = sys.argv[1] if len(sys.argv) > 1 else '0.0.0.0'
+HOST = sys.argv[1] if len(sys.argv) > 1 else '127.0.0.1'
 PORT = 9090
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
