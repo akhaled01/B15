@@ -1,3 +1,6 @@
+import socket
+
+
 class HTTPResponseWriter:
     """
     Provides a simple HTTP response writer that can be used to send responses to
@@ -8,11 +11,11 @@ class HTTPResponseWriter:
     headers, and setting the response content.
     """
 
-    def __init__(self, client_socket):
+    def __init__(self, client_socket: socket.socket):
         self.client_socket = client_socket
         self.status_code = 200
         self.headers = {}
-        self.content = b""
+        self.content: bytes = None
 
     def set_status_code(self, code):
         self.status_code = code
@@ -21,7 +24,7 @@ class HTTPResponseWriter:
         self.headers[key] = value
 
     def set_content(self, content):
-        self.content = content.encode('ascii')
+        self.content = content
 
     def send_response(self):
         """
@@ -33,21 +36,24 @@ class HTTPResponseWriter:
           Returns:
               str: The HTTP response header string.
           """
-        response = f"HTTP/1.1 {self.status_code} {self._get_status_message(self.status_code)}\r\n"
+        response: str = f"HTTP/1.1 {self.status_code} {self._get_status_message(self.status_code)}\r\n"
         for key, value in self.headers.items():
             response += f"{key}: {value}\r\n"
         response += "\r\n"
-        response += self.content.decode("utf-8")
+        response += self.content
         self.client_socket.sendall(response.encode('utf-8'))
 
     def _get_status_message(self, code):
         # Maps status codes to messages (add more as needed)
         messages = {
             200: "OK",
-            404: "Not Found",
+            201: "Created",
             400: "Bad Request",
-            500: "Internal Server Error",
+            401: "Unauthorized",
+            404: "Not Found",
             405: "Method Not Allowed",
+            409: "Conflict",
             418: "I'm a teapot",
+            500: "Internal Server Error",
         }
         return messages.get(code, "Unknown Status Code")

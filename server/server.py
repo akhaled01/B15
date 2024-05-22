@@ -24,7 +24,7 @@ except OSError:
       This is a workaround to kill the process and the terminal.
     '''
     server_logger.error(
-        "please kill the process and the teriminal and restart server")
+        "please kill the process and the terminal and restart server")
 
 server_socket.listen()  # listen for an infinite amt of clients
 server_logger.info(f"listening and serving on {HOST}:{PORT}")
@@ -36,9 +36,9 @@ try:
             target=HandleClient, args=(client_conn, server_socket))
         client_thread.start()
         client_thread.join()
-        client_conn.close()
 except KeyboardInterrupt:
     server_logger.info(f"Server stopped")
-    server_socket.shutdown(2)
+finally:
+    server_socket.shutdown(socket.SHUT_RDWR)
     server_socket.close()
     sys.exit(0)

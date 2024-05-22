@@ -5,7 +5,7 @@ from datetime import datetime
 import json
 
 
-def LogClientRequest(request: HttpRequest, response_data: dict, response_writer: HTTPResponseWriter):
+def LogClientRequest(request: HttpRequest, response_writer: HTTPResponseWriter):
     '''
       `LogClientRequest` is a function that logs the client request and the response.
       It takes in the `HttpRequest` object, the response data and the `HTTPResponseWriter` object.
@@ -19,12 +19,14 @@ def LogClientRequest(request: HttpRequest, response_data: dict, response_writer:
       Returns:
       None
     '''
-    with open(f"log/json/B15_{json.loads(request.get_data()).get('client_name')}_{json.loads(request.get_data()).get('option')}.json", "w") as f:
+    data = json.loads(request.get_data()) if request.get_data() else None
+    if not data:
+        return
+
+    with open(f"log/json/B15_{data.get('client_name')}_{data.get('option')}.json", "w") as f:
         f.write(json.dumps({
-            "client_name": json.loads(request.get_data()).get("client_name"),
-            "option": json.loads(request.get_data()).get("option"),
-            "request": request.get_data(),
-            "response": response_data,
+            "client_name": data.get("client_name"),
+            "option": data.get("option"),
             "response_status": str(response_writer.status_code) + " " + response_writer._get_status_message(response_writer.status_code),
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }))
@@ -39,9 +41,14 @@ def LogClientConn(request: HttpRequest):
       Parameters:
       request (HttpRequest): The request object.
     '''
-    request_data = json.loads(request.get_data())
-    server_logger.info(
-        f"Client connection from: {request_data.get('client_name')}")
-    server_logger.info(
-        f"Client connection option: {request_data.get('option')}")
-    server_logger.info(f"Client connection request: {request.get_url()}")
+
+    try:
+        request_data = json.loads(request.get_data())
+        server_logger.info(
+            f"Client connection from: {request_data.get('client_name')}")
+        server_logger.info(
+            f"Client connection option: {request_data.get('option')}")
+        server_logger.info(f"Client connection request: {request.get_url()}")
+    except Exception as e:
+        server_logger.error(f"Error logging client connection: {e}")
+        return

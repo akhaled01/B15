@@ -15,7 +15,7 @@ class HttpRequest:
         self.headers = {}
         self.data = None
 
-    def parse_request(self, request_string):
+    def parse_request(self, request_string: str):
         # Split request string into lines
         lines = request_string.splitlines()
 
@@ -36,7 +36,7 @@ class HttpRequest:
         if "Content-Length" in self.headers:
             content_length = int(self.headers["Content-Length"])
             # Read data from the remaining bytes based on content length
-            self.data = request_string.split("\r\n\r\n", 1)[1][:content_length]
+            self.data = request_string.split("\r\n\r\n", 1)[1]
 
     def get_method(self):
         return self.method
@@ -47,5 +47,5 @@ class HttpRequest:
     def get_headers(self):
         return self.headers
 
-    def get_data(self):
+    def get_data(self) -> dict:
         return self.data

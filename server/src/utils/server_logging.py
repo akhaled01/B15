@@ -58,7 +58,7 @@ class Logger:
         self.log('CRITICAL', message)
 
     def print_exception(self, e: Exception):
-        Console().print_exception(e)
+        Console().print(e.with_traceback())
 
 
 server_logger = Logger('log/server.log', 'INFO')
