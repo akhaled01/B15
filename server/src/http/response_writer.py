@@ -1,4 +1,6 @@
+from ..utils.server_logging import server_logger
 import socket
+import json
 
 
 class HTTPResponseWriter:
@@ -41,7 +43,13 @@ class HTTPResponseWriter:
             response += f"{key}: {value}\r\n"
         response += "\r\n"
         response += self.content
-        self.client_socket.sendall(response.encode('utf-8'))
+        try:
+            print("sending response")
+            self.client_socket.send(response.encode('utf-8'))
+        except BrokenPipeError:
+            server_logger.warning(
+                f"Client disconnected while sending response. Status Code: {self.status_code}")
+            return
 
     def _get_status_message(self, code):
         # Maps status codes to messages (add more as needed)
@@ -57,3 +65,12 @@ class HTTPResponseWriter:
             500: "Internal Server Error",
         }
         return messages.get(code, "Unknown Status Code")
+
+    def __str__(self):
+        return f"HTTP Response Writer: {self.status_code} {self._get_status_message(self.status_code)}"
+
+    def get_response_data(self):
+        """
+        Returns the response data.
+        """
+        return json.loads(self.content)

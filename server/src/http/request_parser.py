@@ -35,7 +35,7 @@ class HttpRequest:
         # Check for data (assuming POST with Content-Length header)
         if "Content-Length" in self.headers:
             content_length = int(self.headers["Content-Length"])
-            # Read data from the remaining bytes based on content length
+            # Read data from the remaining bytes based on content 
             self.data = request_string.split("\r\n\r\n", 1)[1]
 
     def get_method(self):
@@ -47,5 +47,5 @@ class HttpRequest:
     def get_headers(self):
         return self.headers
 
-    def get_data(self) -> dict:
+    def get_data(self):
         return self.data

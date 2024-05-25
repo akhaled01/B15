@@ -14,17 +14,8 @@ HOST = sys.argv[1] if len(sys.argv) > 1 else '127.0.0.1'
 PORT = 9090
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-try:
-    server_socket.bind((HOST, PORT))
-except OSError:
-    '''
-      TCP sockets sometimes dont shutdown correctly.
-      This causes them to continue to listen for connections
-      on a closed port.
-      This is a workaround to kill the process and the terminal.
-    '''
-    server_logger.error(
-        "please kill the process and the terminal and restart server")
+server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+server_socket.bind((HOST, PORT))
 
 server_socket.listen()  # listen for an infinite amt of clients
 server_logger.info(f"listening and serving on {HOST}:{PORT}")
@@ -33,9 +24,8 @@ try:
     while True:
         client_conn, address = server_socket.accept()
         client_thread = threading.Thread(
-            target=HandleClient, args=(client_conn, server_socket))
+            target=HandleClient, args=(client_conn,))
         client_thread.start()
-        client_thread.join()
 except KeyboardInterrupt:
     server_logger.info(f"Server stopped")
 finally:

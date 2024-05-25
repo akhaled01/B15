@@ -1,5 +1,6 @@
 from ..utils.server_logging import server_logger
 import requests
+import traceback
 import os
 
 
@@ -31,7 +32,7 @@ def GetHeadlines(keywords: list[str], country: str, category: str) -> dict:
         url_payload) if len(url_payload) > 0 else ""
 
     try:
-        url = f'https://newsapi.org/v2/top-headlines?{parsed_string_payload}' if parsed_string_payload != "" else f'https://newsapi.org/v2/everything?country=us'
+        url = f'https://newsapi.org/v2/top-headlines?{parsed_string_payload}' if parsed_string_payload != "" else f'https://newsapi.org/v2/everything?q=apple'
         data = requests.get(url, headers={
             'Accept': 'application/json',
             'X-Api-Key': os.getenv('API_KEY')
@@ -48,4 +49,4 @@ def GetHeadlines(keywords: list[str], country: str, category: str) -> dict:
 
     except Exception as e:
         server_logger.error("error fetching headlines")
-        server_logger.print_exception(e)
+        server_logger.error(traceback.format_exc(chain=True))

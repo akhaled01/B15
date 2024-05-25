@@ -27,14 +27,14 @@ sources_menu = Markdown("""
 """)
 
 country_menu = Markdown("""
-1. Australia
-2. New Zealand
-3. Canada
-4. UAE
-5. South Africa
-6. United Kingdom
-7. United States
-8. Morroco
+1. Australia (AU)
+2. New Zealand (NZ)
+3. Canada (CA)
+4. UAE (AE)
+5. South Africa (ZA)
+6. United Kingdom (GB)
+7. United States (US)
+8. Morroco (MA)
 """)
 
 
