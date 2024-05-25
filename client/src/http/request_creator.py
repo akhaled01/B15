@@ -64,7 +64,6 @@ class ClientHttpRequest:
             data_str = json.dumps(data)
             content_length = len(data_str.encode('utf-8'))
             self.request = f"""GET {uri} HTTP/1.1\r\nHost: {self.host}:{self.port}\r\nContent-Length: {content_length}\r\n\r\n{data_str}"""
-            print(self.request)
         else:
             self.request = f"GET {uri} HTTP/1.1\r\nHost: {self.host}:{self.port}\r\n\r\n"
         return self.send(self.request.encode('utf-8'))

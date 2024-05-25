@@ -110,6 +110,8 @@ def display_headlines_menu(username: str):
         input("")
         display_headlines_menu()
     fmt_headline_details(articles[headline_choice - 1])
+    input("")
+    display_main_menu(username)
 
 
 def display_sources_menu(username: str):

@@ -13,7 +13,7 @@ except ConnectionRefusedError:
     sys.exit(1)
 
 except KeyboardInterrupt:
-    if username:
+    if username or 'username' in locals():
         # disconnect the client before ending
         if ClientHttpRequest().POST(url="/disconn", host="localhost", port=9090, data={"client_name": username}).get_status_code() == 200:
             Console().print(f"[bold white]\nGoodbye {username}!")

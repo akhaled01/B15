@@ -13,11 +13,11 @@ def fmt_headline_response(articles: list[dict]):
     for index, article in enumerate(articles):
         # construct Markdown, and then print
         C.print(Markdown(
-            f"""
-            ### {index + 1}. {article['title']}
-            Source name: {article['source']['name']}. 
-            Written By: {article['author']}
-          """ + '\n'
+            "\n" + f'''
+# {index + 1}. {article['title']}           
+Source name: {article['source']['name']}. 
+Written By: {article['author']}
+          ''' + "\n" + ">--------------------------------------<" + "\n"
         ))
 
 
@@ -36,15 +36,15 @@ def fmt_headline_details(article: dict):
     time = datetime_obj.time()
 
     C.print(Markdown(
-        f"""
-        ## {article['title']}
+        f'''
+## {article['title'] if article['title'] or article['title'] != '[Removed]' else "No title available"}
         
-        description: {article['description'] if article['description'] else "No description available"}
-        
-        url : {article['url']}
-        Date of publish: {date.strftime("%d/%m/%Y")}
-        time of publish: {time.strftime("%H:%M")}
-        Source name: {article['source']['name']}.
-        Written By: {article['author']}
-        """
+description: {article['description'] if article['description'] or article['description'] != '[Removed]' else "No description available"}
+ 
+- url : {article['url'] if article['url'] else "Unavailable"}
+- Date of publish: {date.strftime("%d/%m/%Y")}
+- time of publish: {time.strftime("%H:%M")}
+- Source name: {article['source']['name'] if article['source']['name'] else "unknown"}
+- Written By: {article['author'] if article['author'] else "unknown"}
+        '''
     ))
