@@ -1,0 +1,218 @@
+{
+  "client_name": "ak",
+  "option": 1.2,
+  "response_status": "200 OK",
+  "timestamp": "2024-05-25 21:53:03",
+  "response": {
+    "message": [
+      {
+        "source": {
+          "id": "google-news",
+          "name": "Google News"
+        },
+        "author": "Euronews Espa\u00f1ol",
+        "title": "\u00bfEst\u00e1n empresas y pa\u00edses preparados para la revoluci\u00f3n de la IA? - Euronews Espa\u00f1ol",
+        "description": null,
+        "url": "https://news.google.com/rss/articles/CBMidmh0dHBzOi8vZXMuZXVyb25ld3MuY29tL25leHQvMjAyNC8wNS8yNC9jb21vLWRlLXByZXBhcmFkb3MtZXN0YW4tbGFzLWVtcHJlc2FzLXktbG9zLXBhaXNlcy1wYXJhLWxhLXJldm9sdWNpb24tZGUtbGEtaWHSAQA?oc=5",
+        "urlToImage": null,
+        "publishedAt": "2024-05-24T16:35:39Z",
+        "content": null
+      },
+      {
+        "source": {
+          "id": "google-news",
+          "name": "Google News"
+        },
+        "author": "Microsoft News Center Latinoam\u00e9rica",
+        "title": "C\u00f3mo la IA puede dar un impulso a los t\u00e9cnicos de servicio de campo - Source LATAM - Microsoft News Center Latinoam\u00e9rica",
+        "description": null,
+        "url": "https://news.google.com/rss/articles/CBMiggFodHRwczovL25ld3MubWljcm9zb2Z0LmNvbS9zb3VyY2UvbGF0YW0vbm90aWNpYXMtZGUtbWljcm9zb2Z0L2NvbW8tbGEtaWEtcHVlZGUtZGFyLXVuLWltcHVsc28tYS1sb3MtdGVjbmljb3MtZGUtc2VydmljaW8tZGUtY2FtcG8v0gEA?oc=5",
+        "urlToImage": null,
+        "publishedAt": "2024-05-24T16:21:27Z",
+        "content": null
+      },
+      {
+        "source": {
+          "id": "google-news",
+          "name": "Google News"
+        },
+        "author": "infobae",
+        "title": "Swiss Market termina la sesi\u00f3n de este 24 de mayo en terreno negativo - infobae",
+        "description": null,
+        "url": "https://news.google.com/rss/articles/CBMicmh0dHBzOi8vd3d3LmluZm9iYWUuY29tL25vdGljaWFzLzIwMjQvMDUvMjQvc3dpc3MtbWFya2V0LXRlcm1pbmEtbGEtc2VzaW9uLWRlLWVzdGUtMjQtZGUtbWF5by1lbi10ZXJyZW5vLW5lZ2F0aXZvL9IBhgFodHRwczovL3d3dy5pbmZvYmFlLmNvbS9ub3RpY2lhcy8yMDI0LzA1LzI0L3N3aXNzLW1hcmtldC10ZXJtaW5hLWxhLXNlc2lvbi1kZS1lc3RlLTI0LWRlLW1heW8tZW4tdGVycmVuby1uZWdhdGl2by8_b3V0cHV0VHlwZT1hbXAtdHlwZQ?oc=5",
+        "urlToImage": null,
+        "publishedAt": "2024-05-24T16:19:10Z",
+        "content": null
+      },
+      {
+        "source": {
+          "id": "google-news",
+          "name": "Google News"
+        },
+        "author": "infobae",
+        "title": "ATX termin\u00f3 la jornada en terreno positivo este 24 de mayo - infobae",
+        "description": null,
+        "url": "https://news.google.com/rss/articles/CBMiZ2h0dHBzOi8vd3d3LmluZm9iYWUuY29tL25vdGljaWFzLzIwMjQvMDUvMjQvYXR4LXRlcm1pbm8tbGEtam9ybmFkYS1lbi10ZXJyZW5vLXBvc2l0aXZvLWVzdGUtMjQtZGUtbWF5by_SAXtodHRwczovL3d3dy5pbmZvYmFlLmNvbS9ub3RpY2lhcy8yMDI0LzA1LzI0L2F0eC10ZXJtaW5vLWxhLWpvcm5hZGEtZW4tdGVycmVuby1wb3NpdGl2by1lc3RlLTI0LWRlLW1heW8vP291dHB1dFR5cGU9YW1wLXR5cGU?oc=5",
+        "urlToImage": null,
+        "publishedAt": "2024-05-24T16:18:53Z",
+        "content": null
+      },
+      {
+        "source": {
+          "id": "google-news",
+          "name": "Google News"
+        },
+        "author": "memehongkong",
+        "title": "\u3010\u5468\u4e94\u76f4\u64ad\u3011\u8ac7AI \u65b0\u4e16\u754c\uff01\u958b\u653e\u63d0\u554f\uff1a\u5c31\u696d\u3001\u6295\u8cc7\u3001\u5347\u5b78 2024-05-24 - memehongkong",
+        "description": null,
+        "url": "https://news.google.com/rss/articles/CCAiC0hDcEdZR3g3bVdFmAEB?oc=5",
+        "urlToImage": null,
+        "publishedAt": "2024-05-24T16:18:10Z",
+        "content": null
+      },
+      {
+        "source": {
+          "id": "google-news",
+          "name": "Google News"
+        },
+        "author": "Infobae Espa\u00f1a",
+        "title": "Sorteo del Euromillones: cu\u00e1nto dinero puedo llegar a ganar con un boleto simple - Infobae Espa\u00f1a",
+        "description": null,
+        "url": "https://news.google.com/rss/articles/CBMiemh0dHBzOi8vd3d3LmluZm9iYWUuY29tL2VzcGFuYS8yMDI0LzA1LzI0L3NvcnRlby1kZWwtZXVyb21pbGxvbmVzLWN1YW50by1kaW5lcm8tcHVlZG8tbGxlZ2FyLWEtZ2FuYXItY29uLXVuLWJvbGV0by1zaW1wbGUv0gGOAWh0dHBzOi8vd3d3LmluZm9iYWUuY29tL2VzcGFuYS8yMDI0LzA1LzI0L3NvcnRlby1kZWwtZXVyb21pbGxvbmVzLWN1YW50by1kaW5lcm8tcHVlZG8tbGxlZ2FyLWEtZ2FuYXItY29uLXVuLWJvbGV0by1zaW1wbGUvP291dHB1dFR5cGU9YW1wLXR5cGU?oc=5",
+        "urlToImage": null,
+        "publishedAt": "2024-05-24T16:16:11Z",
+        "content": null
+      },
+      {
+        "source": {
+          "id": "google-news",
+          "name": "Google News"
+        },
+        "author": "Marketscreener DE",
+        "title": "M\u00c4RKTE USA/Wall Street erholt sich von Vortagesabgaben - Marketscreener DE",
+        "description": null,
+        "url": "https://news.google.com/rss/articles/CBMigwFodHRwczovL2RlLm1hcmtldHNjcmVlbmVyLmNvbS9rdXJzL2FrdGllL1dPUktEQVktSU5DLTM3ODY2NjcwL25ld3MvTUFSS1RFLVVTQS1XYWxsLVN0cmVldC1lcmhvbHQtc2ljaC12b24tVm9ydGFnZXNhYmdhYmVuLTQ2ODIwNTYxL9IBAA?oc=5",
+        "urlToImage": null,
+        "publishedAt": "2024-05-24T16:15:56Z",
+        "content": null
+      },
+      {
+        "source": {
+          "id": "google-news",
+          "name": "Google News"
+        },
+        "author": "LA NACION",
+        "title": "D\u00f3lar hoy, d\u00f3lar blue hoy: a cu\u00e1nto cotiza este viernes 24 de mayo - LA NACION",
+        "description": null,
+        "url": "https://news.google.com/rss/articles/CBMieGh0dHBzOi8vd3d3LmxhbmFjaW9uLmNvbS5hci9lY29ub21pYS9kb2xhci9kb2xhci1ob3ktZG9sYXItYmx1ZS1ob3ktYS1jdWFudG8tY290aXphLWVzdGUtdmllcm5lcy0yNC1kZS1tYXlvLW5pZDI0MDUyMDI0L9IBAA?oc=5",
+        "urlToImage": null,
+        "publishedAt": "2024-05-24T16:15:00Z",
+        "content": null
+      },
+      {
+        "source": {
+          "id": "google-news",
+          "name": "Google News"
+        },
+        "author": "Clar\u00edn",
+        "title": "Mercedes-Benz GLC Coup\u00e9: qu\u00e9 trae el nuevo SUV que combina lujo y deportividad - Clar\u00edn",
+        "description": null,
+        "url": "https://news.google.com/rss/articles/CBMib2h0dHBzOi8vd3d3LmNsYXJpbi5jb20vYXV0b3MvbWVyY2VkZXMtYmVuei1nbGMtY291cGUtdHJhZS1udWV2by1zdXYtY29tYmluYS1sdWpvLWRlcG9ydGl2aWRhZF8wX2RpSnNrckZTSEouaHRtbNIBc2h0dHBzOi8vd3d3LmNsYXJpbi5jb20vYXV0b3MvbWVyY2VkZXMtYmVuei1nbGMtY291cGUtdHJhZS1udWV2by1zdXYtY29tYmluYS1sdWpvLWRlcG9ydGl2aWRhZF8wX2RpSnNrckZTSEouYW1wLmh0bWw?oc=5",
+        "urlToImage": null,
+        "publishedAt": "2024-05-24T16:14:40Z",
+        "content": null
+      },
+      {
+        "source": {
+          "id": "google-news",
+          "name": "Google News"
+        },
+        "author": "Reuters",
+        "title": "Wall Street bounces back ahead of long weekend - Reuters",
+        "description": null,
+        "url": "https://news.google.com/rss/articles/CBMiZ2h0dHBzOi8vd3d3LnJldXRlcnMuY29tL21hcmtldHMvdXMvZnV0dXJlcy1yZWNvdmVyLWFmdGVyLWluZmxhdGlvbi1qaXR0ZXJzLWRlbnQtd2FsbC1zdHJlZXQtMjAyNC0wNS0yNC_SAQA?oc=5",
+        "urlToImage": null,
+        "publishedAt": "2024-05-24T16:13:00Z",
+        "content": null
+      },
+      {
+        "source": {
+          "id": "google-news",
+          "name": "Google News"
+        },
+        "author": "Euronews Espa\u00f1ol",
+        "title": "La cara y la cruz de la IA en el medioambiente, seg\u00fan el ecologista Bertnard Piccard - Euronews Espa\u00f1ol",
+        "description": null,
+        "url": "https://news.google.com/rss/articles/CBMie2h0dHBzOi8vZXMuZXVyb25ld3MuY29tL25leHQvMjAyNC8wNS8yNC9sYS1jYXJhLXktbGEtY3J1ei1kZS1sYS1pYS1lbi1lbC1tZWRpb2FtYmllbnRlLXNlZ3VuLWVsLWVjb2xvZ2lzdGEtYmVydG5hcmQtcGljY2FyZNIBAA?oc=5",
+        "urlToImage": null,
+        "publishedAt": "2024-05-24T16:12:54Z",
+        "content": null
+      },
+      {
+        "source": {
+          "id": "google-news",
+          "name": "Google News"
+        },
+        "author": "Yahoo Canada Finance",
+        "title": "5 Charts Showing Nvidia's Jaw-Dropping Rise to Chip Stardom - Yahoo Canada Finance",
+        "description": null,
+        "url": "https://news.google.com/rss/articles/CBMiTmh0dHBzOi8vY2EuZmluYW5jZS55YWhvby5jb20vbmV3cy9udmlkaWEtamF3LWRyb3BwaW5nLXJpc2UtY2hpcC0xNTI3MjY2OTkuaHRtbNIBAA?oc=5",
+        "urlToImage": null,
+        "publishedAt": "2024-05-24T16:11:48Z",
+        "content": null
+      },
+      {
+        "source": {
+          "id": "google-news",
+          "name": "Google News"
+        },
+        "author": "\u00e1mbito.com",
+        "title": "Las acciones operan mixtas mientras los bonos pierden hasta 8,2% y sube el riesgo pa\u00eds - \u00e1mbito.com",
+        "description": null,
+        "url": "https://news.google.com/rss/articles/CBMid2h0dHBzOi8vd3d3LmFtYml0by5jb20vZmluYW56YXMvbGFzLWFjY2lvbmVzLW9wZXJhbi1taXh0YXMtbWllbnRyYXMtbG9zLWJvbm9zLXBpZXJkZW4tODIteS1zdWJlLWVsLXJpZXNnby1wYWlzLW42MDA0MDM10gF3aHR0cHM6Ly93d3cuYW1iaXRvLmNvbS9maW5hbnphcy9sYXMtYWNjaW9uZXMtb3BlcmFuLW1peHRhcy1taWVudHJhcy1sb3MtYm9ub3MtcGllcmRlbi04Mi15LXN1YmUtZWwtcmllc2dvLXBhaXMtbjYwMDQwMzU?oc=5",
+        "urlToImage": null,
+        "publishedAt": "2024-05-24T16:03:20Z",
+        "content": null
+      },
+      {
+        "source": {
+          "id": "google-news",
+          "name": "Google News"
+        },
+        "author": "Le Monde",
+        "title": "Le g\u00e9ant des concerts Live Nation attaqu\u00e9 pour pratiques anticoncurrentielles - Le Monde",
+        "description": null,
+        "url": "https://news.google.com/rss/articles/CBMikgFodHRwczovL3d3dy5sZW1vbmRlLmZyL2Vjb25vbWllL2FydGljbGUvMjAyNC8wNS8yNC9sZS1nZWFudC1kZXMtY29uY2VydHMtbGl2ZS1uYXRpb24tYXR0YXF1ZS1wb3VyLXByYXRpcXVlcy1hbnRpY29uY3VycmVudGllbGxlc182MjM1MzA4XzMyMzQuaHRtbNIBAA?oc=5",
+        "urlToImage": null,
+        "publishedAt": "2024-05-24T16:00:28Z",
+        "content": null
+      },
+      {
+        "source": {
+          "id": "google-news",
+          "name": "Google News"
+        },
+        "author": "DER STANDARD",
+        "title": "Chinas 9000-Euro-E-Auto kommt nach Europa - IT-Business - derStandard.at \u203a Web - DER STANDARD",
+        "description": null,
+        "url": "https://news.google.com/rss/articles/CBMiWGh0dHBzOi8vd3d3LmRlcnN0YW5kYXJkLmF0L3N0b3J5LzMwMDAwMDAyMjE0MTgvY2hpbmFzLTkwMDAtZXVyby1lLWF1dG8ta29tbXQtbmFjaC1ldXJvcGHSAQA?oc=5",
+        "urlToImage": null,
+        "publishedAt": "2024-05-24T15:55:00Z",
+        "content": null
+      },
+      {
+        "source": {
+          "id": "google-news",
+          "name": "Google News"
+        },
+        "author": "infobae",
+        "title": "Comprobar Super Once: los ganadores del Sorteo 4 de este 24 mayo - infobae",
+        "description": null,
+        "url": "https://news.google.com/rss/articles/CBMiamh0dHBzOi8vd3d3LmluZm9iYWUuY29tL2VzcGFuYS8yMDI0LzA1LzI0L2NvbXByb2Jhci1zdXBlci1vbmNlLWxvcy1nYW5hZG9yZXMtZGVsLXNvcnRlby00LWRlLWVzdGUtMjQtbWF5by_SAX5odHRwczovL3d3dy5pbmZvYmFlLmNvbS9lc3BhbmEvMjAyNC8wNS8yNC9jb21wcm9iYXItc3VwZXItb25jZS1sb3MtZ2FuYWRvcmVzLWRlbC1zb3J0ZW8tNC1kZS1lc3RlLTI0LW1heW8vP291dHB1dFR5cGU9YW1wLXR5cGU?oc=5",
+        "urlToImage": null,
+        "publishedAt": "2024-05-24T15:53:01Z",
+        "content": null
+      }
+    ]
+  }
+}
