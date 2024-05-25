@@ -1,8 +1,6 @@
 from .http.request_creator import ClientHttpRequest
+from .UI.menus import display_main_menu
 from rich.console import Console
-from .UI.renderes import UI
-import socket
-
 import sys
 
 
@@ -16,8 +14,8 @@ def ServerConn(client_name: str):
 
     # send a post request to conn client name, if 201, return socket, else error
     if ClientHttpRequest().POST(
-            "/conn", f"localhost", 9090, {"client_name": client_name}).get_status_code() == 201:
-        UI(client_name)
+            "/conn", "localhost", 9090, {"client_name": client_name}).get_status_code() == 201:
+        display_main_menu(client_name)
     else:
         Console().print("[bold red] Error: Could not connect to server")
         sys.exit(1)

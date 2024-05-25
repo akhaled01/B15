@@ -27,6 +27,8 @@ sources_menu = Markdown("""
 """)
 
 country_menu = Markdown("""
+#### Available Countries
+
 1. Australia (AU)
 2. New Zealand (NZ)
 3. Canada (CA)
@@ -39,11 +41,15 @@ country_menu = Markdown("""
 
 
 language_menu = Markdown("""
+#### Supported Languages
+
 1. English
 2. Arabic
 """)
 
 category_menu = Markdown("""
+#### Supported categories
+                         
 1. Business
 2. Entertainment
 3. general
