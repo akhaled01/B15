@@ -15,7 +15,6 @@ class HttpResponseParser:
         self._parse_response()
 
     def _parse_response(self):
-        print(self.response_data)
         try:
             header_data, self.body = self.response_data.split('\r\n\r\n', 1)
         except ValueError:

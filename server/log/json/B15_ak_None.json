@@ -1,1 +1,1 @@
-{"client_name": "ak", "option": null, "response_status": "200 OK", "timestamp": "2024-05-25 22:02:38", "response": {"message": "Client Disconnected"}}
+{"client_name": "ak", "option": null, "response_status": "409 Conflict", "timestamp": "2024-05-25 22:55:24", "response": {"message": "This name already exists"}}

@@ -17,10 +17,28 @@ class ClientHttpRequest:
         self.port = 9090
 
     def send(self, data):
+        '''
+          This function sends the data to the server and returns the response.
+
+          Parameters:
+          data: dict
+          The data to be sent to the server.
+
+          Returns:
+          HttpResponseParser: The response from the server.
+        '''
         try:
             self.sock.connect((self.host, self.port))
             self.sock.send(data)
-            raw_response = self.sock.recv(4096).decode('utf-8')
+
+            response_bytes = b""
+            while True:
+                part = self.sock.recv(4096)  # Read in chunks of 4KB
+                if not part:  # If no more data is available
+                    break
+                response_bytes += part
+
+            raw_response = response_bytes.decode('utf-8')
             return HttpResponseParser(raw_response)
         except BrokenPipeError:
             # Handle broken pipe error (e.g., log error or return appropriate value)

@@ -1,5 +1,6 @@
 from ..http.request_creator import ClientHttpRequest
 from rich.prompt import IntPrompt, Prompt
+from .headline_response_fmt import *
 from rich.console import Console
 from rich.text import Text
 from .markdowns import *
@@ -100,9 +101,15 @@ def display_headlines_menu(username: str):
     response_data = request.GET(
         uri="/headlines", data=json.dumps(request_data))
 
-    C.print(response_data.get_body())
-    input("")
-    display_main_menu(username)
+    articles = json.loads(response_data.get_body())["message"]
+    fmt_headline_response(articles)
+    headline_choice = IntPrompt.ask(
+        "[bold green]please enter the desired headline number")
+    if headline_choice not in range(1, len(articles) + 1):
+        C.print(Text("Invalid Choice", style="bold red"))
+        input("")
+        display_headlines_menu()
+    fmt_headline_details(articles[headline_choice - 1])
 
 
 def display_sources_menu(username: str):
