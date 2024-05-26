@@ -25,7 +25,6 @@ Going through the project, you'll find multiple modules that facilitate communic
     - [The `client` directory](#the-client-directory)
   - [Extra Concepts](#extra-concepts)
   - [Authors](#authors)
-          - [Group B15 - Course ITNE352 - Section 2](#group-b15---course-itne352---section-2)
 
 ## Running the project
 
@@ -46,6 +45,7 @@ This script creates a new venv (if needed), adds all the dependencies (if needed
 
 To run the server, run `B15 server` from the root dir of the project.
 To run the client, run `B15 client` from the root dir of the project.
+To view more info (aka this README), run `B15 info` from the root dir of the project.
 
 ## About the Scripts
 
@@ -154,7 +154,7 @@ except KeyboardInterrupt:
 
 ## Authors
 
-###### Group B15 - Course ITNE352 - Section 2
+Group B15 - Course ITNE352 - Section 2
 
 1. Abdulrahman Khaled Idrees - 202200729
 2. Yousef Raja Salem - 202109958
