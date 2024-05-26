@@ -4,7 +4,7 @@
 
 `B15` is a HTTP compliant TCP socket server and client. The server can accept any HTTP client (including ours of course) and acts as a proxy to [NewsAPI.org](https://newsapi.org/). The client can be used to send requests to the server and receive responses from the server. The client and server are written in Python and some tests are written in shell bash.
 
-Our project is a quite different due to a multitude of factors, the biggest of which, is that it's compliant with the [HTTP/1.1 RFC](https://https://datatracker.ietf.org/doc/html/rfc2616).
+Our project is a quite different due to a multitude of factors, the biggest of which, is that it's compliant with the [HTTP/1.1 RFC](https://datatracker.ietf.org/doc/html/rfc2616).
 
 > [!NOTE]
 > `nginx` has inspired the idea of this project!
