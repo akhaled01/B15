@@ -30,13 +30,15 @@ def fmt_headline_details(article: dict):
 
     # parse the article publish date
     C.clear()
-    datetime_obj = datetime.strptime(
-        article.get('publishedAt'), "%Y-%m-%dT%H:%M:%SZ")
+    try:
+        datetime_obj = datetime.strptime(
+            article.get('publishedAt'), "%Y-%m-%dT%H:%M:%SZ")
+    except ValueError:
+        datetime_obj = datetime.fromtimestamp(0)
 
     # Extract date and time
     date = datetime_obj.date()
     time = datetime_obj.time()
-    
 
     C.print(Markdown(
         f'''
