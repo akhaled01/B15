@@ -4,7 +4,7 @@
 
 `B15` is a HTTP compliant TCP socket server and client. The server can accept any HTTP client (including ours of course) and acts as a proxy to [NewsAPI.org](https://newsapi.org/). The client can be used to send requests to the server and receive responses from the server. The client and server are written in Python and some tests are written in shell bash.
 
-Our project is a quite different due to a multitude of factors, the biggest of which, is that it's compliant with the [HTTP/1.1 RFC](https://datatracker.ietf.org/doc/html/rfc2616).
+B15 is quite different from other TCP socket servers due to a multitude of factors, the biggest of which, is that it's compliant with the [HTTP/1.1 RFC](https://datatracker.ietf.org/doc/html/rfc2616).
 
 > [!NOTE]
 > `nginx` has inspired the idea of this project!
@@ -19,19 +19,20 @@ Going through the project, you'll find multiple modules that facilitate communic
 
 - [B15](#b15)
   - [Table of Content](#table-of-content)
-  - [Running the project](#running-the-project)
+  - [Running B15](#running-b15)
   - [About the Scripts](#about-the-scripts)
     - [The `server` Directory](#the-server-directory)
     - [The `client` directory](#the-client-directory)
   - [Extra Concepts](#extra-concepts)
+  - [`fs` Structure](#fs-structure)
   - [Authors](#authors)
 
-## Running the project
+## Running B15
 
 > [!IMPORTANT]
-> Use a mature Linux distro to run this project
+> Use a mature Linux distro!
 
-To run the project, you'll need to have Python 3.11.0 or higher installed on your machine.
+To run B15, you'll need to have Python 3.11.0 or higher installed on your machine.
 
 First, get an API key from [NewsAPI.org](https://newsapi.org/) and add it to a `.env` file in the root directory of the project Like this.
 
@@ -146,11 +147,72 @@ except KeyboardInterrupt:
    1. To use them, run `sudo chmod 777 *` inside the `tests` directory, and then run `./<script-name>`
 2. A `.env` file was used to ensure security of our API key, and is loaded inside the `server.py` script using the `d
 3. A python `.gitignore` template was used to not push any unimportant scripts
-4. This project adapts to any HTTP client, including `Postman` or `curl`!
+4. B15 server adapts to any HTTP client, including `Postman` or `curl`!
    1. You may also build other clients using Js, Go, or anything really 😄
-5. Shell script is extensively used to run this project
+5. Shell script is extensively used to run B15
 6. `B15` is fully thread safe, and uses concurrency concepts like mutex locks to manage race conditions between multiple clients
 7. Last but not least, a great terminal UI is used for `B15`, provided by the `rich` module
+
+## `fs` Structure
+
+```shell
+.
+├── client
+│   ├── client.py
+│   └── src
+│       ├── conn.py
+│       ├── http
+│       │   ├── request_creator.py
+│       │   └── response_parser.py
+│       └── UI
+│           ├── headline_response_fmt.py
+│           ├── markdowns.py
+│           ├── menus.py
+│           └── sources_response_fmt.py
+├── config-env.sh
+├── LICENSE
+├── README.md
+├── requirements.txt
+├── scripts
+│   ├── client.sh
+│   ├── run.sh
+│   └── server.sh
+├── server
+│   ├── log
+│   │   └── json
+│   │       ├── B15_aa_1.1.json
+│   │       ├── B15_aa_None.json
+│   │       ├── B15_ab_1.1.json
+│   │       ├── B15_ab_None.json
+│   │       ├── B15_ak_1.1.json
+│   │       ├── B15_ak_1.3.json
+│   │       ├── B15_ak_2.1.json
+│   │       ├── B15_ak_2.3.json
+│   │       └── B15_ak_None.json
+│   ├── server.py
+│   └── src
+│       ├── controllers
+│       │   ├── headlines.py
+│       │   ├── README.md
+│       │   └── sources.py
+│       ├── handler.py
+│       ├── http
+│       │   ├── request_parser.py
+│       │   ├── response_writer.py
+│       │   └── router.py
+│       └── utils
+│           ├── client_logging.py
+│           ├── data_validation.py
+│           └── server_logging.py
+└── tests
+    ├── test_concurrency.sh
+    ├── test_conn.sh
+    ├── test_headlines.sh
+    ├── test_sources.sh
+    └── test_status_codes.sh
+
+22 directories, 40 files
+```
 
 ## Authors
 
