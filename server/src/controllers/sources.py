@@ -39,7 +39,7 @@ def GetSources(country: str, category: str, lang: str) -> dict:
             raise Exception("NewsAPIException", main_data.get(
                 'code'), main_data.get('message'))
 
-        return main_data['sources']
+        return main_data['sources'][0:15]
 
     except Exception as e:
         server_logger.error("error fetching sources")

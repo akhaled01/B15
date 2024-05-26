@@ -45,7 +45,7 @@ def GetHeadlines(keywords: list[str], country: str, category: str) -> dict:
             raise Exception("NewsAPIException", main_data.get(
                 'code'), main_data.get('message'))
 
-        return main_data['articles'][0:16]  # limit to 15 results
+        return main_data['articles'][0:15]  # limit to 15 results
 
     except Exception:
         server_logger.error("error fetching headlines")

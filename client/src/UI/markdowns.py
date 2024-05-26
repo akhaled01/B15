@@ -43,8 +43,8 @@ country_menu = Markdown("""
 language_menu = Markdown("""
 #### Supported Languages
 
-1. English
-2. Arabic
+1. English (en)
+2. Arabic (ar)
 """)
 
 category_menu = Markdown("""

@@ -1,6 +1,7 @@
 from ..http.request_creator import ClientHttpRequest
 from rich.prompt import IntPrompt, Prompt
 from .headline_response_fmt import *
+from .sources_response_fmt import *
 from rich.console import Console
 from rich.text import Text
 from .markdowns import *
@@ -126,6 +127,97 @@ def display_sources_menu(username: str):
         C.print(Text("Invalid Choice", style="bold red"))
         input("")
         display_sources_menu()
+
+    request_data = {
+        "client_name": username,
+    }
+
+    request = ClientHttpRequest()
+
+    C.clear()
+    match choice_main:
+        case 1:
+            C.print(category_menu)
+            request_data["option"] = 2.1
+
+            category = IntPrompt.ask(
+                "[bold blue]Enter the desired category")
+
+            if category not in [1, 2, 3, 4, 5, 6, 7]:
+                C.print(Text("Invalid Choice", style="bold red"))
+                input("")
+                display_sources_menu()
+
+            match category:
+                case 1:
+                    category = "business"
+                    pass
+                case 2:
+                    category = "entertainment"
+                    pass
+                case 3:
+                    category = "general"
+                    pass
+                case 4:
+                    category = "health"
+                    pass
+                case 5:
+                    category = "science"
+                    pass
+                case 6:
+                    category = "sports"
+                    pass
+                case 7:
+                    category = "technology"
+                    pass
+
+            request_data["category"] = category
+        case 2:
+            C.clear()
+            C.print(country_menu)
+            request_data["option"] = 2.2
+            country = Prompt.ask(
+                "[bold blue]Type the desired country code")
+            if country.lower() not in [code.lower() for code in ["AU", "NZ", "CA", "AE", "ZA", "GB", "US", "MA"]]:
+                C.print(Text("Invalid Choice", style="bold red"))
+                input("")
+                display_sources_menu()
+            request_data["country"] = country
+
+        case 3:
+            C.clear()
+            C.print(language_menu)
+            request_data["option"] = 2.3
+            language = Prompt.ask(
+                "[bold blue]Type the desired language code")
+            if language.lower() not in [code.lower() for code in ["en", "ar"]]:
+                C.print(Text("Invalid Choice", style="bold red"))
+                input("")
+                display_sources_menu()
+
+            request_data["language"] = language
+
+        case 4:
+            request_data["option"] = 2.4
+            pass
+
+        case 5:
+            display_main_menu(username)
+
+    response_data = request.GET(
+        uri="/sources", data=json.dumps(request_data))
+
+    sources = json.loads(response_data.get_body())["message"]
+    fmt_sources_list(sources)
+    source_choice = IntPrompt.ask(
+        "[bold green]please enter the desired source number")
+    if source_choice not in range(1, len(sources) + 1):
+        C.print(Text("Invalid Choice", style="bold red"))
+        input("")
+        display_sources_menu()
+    fmt_source_details(sources[source_choice - 1])
+    input("")
+    display_main_menu(username)
 
 
 def display_main_menu(username: str):

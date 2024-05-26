@@ -2,6 +2,7 @@ from rich.markdown import Markdown
 from rich.console import Console
 from datetime import datetime
 
+
 C = Console(force_terminal=True)
 
 
@@ -9,15 +10,15 @@ def fmt_headline_response(articles: list[dict]):
     '''
       Formats the response from the server and prints it.
     '''
-
+    C.clear()
     for index, article in enumerate(articles):
         # construct Markdown, and then print
         C.print(Markdown(
             "\n" + f'''
-# {index + 1}. {article['title']}           
-Source name: {article['source']['name']}. 
-Written By: {article['author']}
-          ''' + "\n" + ">--------------------------------------<" + "\n"
+#### {index + 1}. {article['title']}           
+- Source name: {article['source']['name']}. 
+- Written By: {article['author']}
+          ''' + "\n" + ">---------------------------------------------------------------------<" + "\n"
         ))
 
 
@@ -28,12 +29,14 @@ def fmt_headline_details(article: dict):
     '''
 
     # parse the article publish date
+    C.clear()
     datetime_obj = datetime.strptime(
         article.get('publishedAt'), "%Y-%m-%dT%H:%M:%SZ")
 
     # Extract date and time
     date = datetime_obj.date()
     time = datetime_obj.time()
+    
 
     C.print(Markdown(
         f'''
