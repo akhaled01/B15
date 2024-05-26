@@ -13,7 +13,7 @@ The hypertext transfer protocol is an application-level protocol for distributed
 
 The idea of this project, is to provide our TCP server socket the ability to accept HTTP clients from any source, and that is done by making it understand the requests, and encode responses in a very specific manner.
 
-Going through the project, you'll find multiple modules that facilitate communication with all client. You'll also find routing utilities that are responsible for multiplexing the requests to the required controller.
+Going through the project, you'll find multiple modules that facilitate communication with all clients. You'll also find routing utilities that are responsible for multiplexing the requests to the required controller. You'll also find out that our client can communicate with any HTTP server *if configured of course*.
 
 ## Table of Content
 
@@ -25,7 +25,7 @@ Going through the project, you'll find multiple modules that facilitate communic
     - [The `client` directory](#the-client-directory)
   - [Extra Concepts](#extra-concepts)
   - [Authors](#authors)
-          - [Group B15 - Course ITNE352 - Section 2](#group-b15---course-itne352---section-2)
+    - [Group B15 - Course ITNE352 - Section 2](#group-b15---course-itne352---section-2)
 
 ## Running the project
 
@@ -54,6 +54,45 @@ There are mainly two scripts, but they use extensive utilities from the `src` mo
 ### The `server` Directory
 
 - `server.py`: This is the main server script that hosts the passive server socket that accepts client connections
+
+```python
+from src.utils.server_logging import server_logger
+from src.handler import HandleClient
+from rich.traceback import install
+from dotenv import load_dotenv
+import threading
+import socket
+import sys
+
+load_dotenv()  # load the .env file for API key
+install()  # pretty print errors
+
+# Expose ip interface if given as CLI argument, else localhost
+HOST = sys.argv[1] if len(sys.argv) > 1 else '127.0.0.1'
+PORT = 9090
+
+server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+server_socket.bind((HOST, PORT))
+
+server_socket.listen()  # listen for an infinite amt of clients
+server_logger.info(f"listening and serving on {HOST}:{PORT}")
+
+try:
+    while True:
+        client_conn, address = server_socket.accept()
+        client_thread = threading.Thread(
+            target=HandleClient, args=(client_conn,))
+        client_thread.start()
+except KeyboardInterrupt:
+    server_logger.info(f"Server stopped")
+finally:
+    server_socket.shutdown(socket.SHUT_RDWR)
+    server_socket.close()
+    sys.exit(0)
+
+```
+
 - `src/http`: This is the module that contains the `HttpRequest` and `HTTPResponseWriter` classes. It also containes the router from which we control client requests and return appropriate responses.
 
 > [!TIP]
@@ -65,6 +104,35 @@ There are mainly two scripts, but they use extensive utilities from the `src` mo
 ### The `client` directory
 
 - `client.py` This is the main client script
+
+```python
+from src.http.request_creator import ClientHttpRequest
+from rich.console import Console
+from src.conn import ServerConn
+from rich.prompt import Prompt
+import sys
+
+try:
+    username = Prompt.ask("[bold green]Enter your username")
+    ServerConn(username)
+
+except ConnectionRefusedError:
+    Console().print("[bold red]The Server is not live")
+    sys.exit(1)
+
+except KeyboardInterrupt:
+    if 'username' in locals() and username:
+        # disconnect the client before ending
+        if ClientHttpRequest().POST(url="/disconn", host="localhost", port=9090, data={"client_name": username}).get_status_code() == 200:
+            Console().print(f"[bold white]\nGoodbye {username}!")
+        else:
+            Console().print(f"[bold red]\nerror disconnecting client")
+    else:
+        print("\nGoodbye!")
+    sys.exit(0)
+
+```
+
 - `src/conn.py` This script establishes a new connection with the server and registers the client's name
 - `src/UI` contains the scripts that are necessary to output a nice terminal UI
   - `markdowns.py` contains all the menus outputted in the terminal
@@ -76,12 +144,13 @@ There are mainly two scripts, but they use extensive utilities from the `src` mo
 
 1. `B15` was built using test driven development, you can see all the shell scripts used to test in the `tests` directory, and use them too!
    1. To use them, run `sudo chmod 777 *` inside the `tests` directory, and then run `./<script-name>`
-2. A `.env` file was used to ensure security of our API key
+2. A `.env` file was used to ensure security of our API key, and is loaded inside the `server.py` script using the `dotenv` module.
 3. A python `.gitignore` template was used to not push any unimportant scripts
 4. This project adapts to any HTTP client, including `Postman` or `curl`!
    1. You may also build other clients using Js, Go, or anything really 😄
 5. Shell script is extensively used to run this project
 6. `B15` is fully thread safe, and uses concurrency concepts like mutex locks to manage race conditions between multiple clients
+7. Last but not least, a great terminal UI is used for `B15`, provided by the `rich` module
 
 ## Authors
 
