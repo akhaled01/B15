@@ -1,6 +1,6 @@
 # B15
 
-![PYTHON](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue) ![JSON](https://img.shields.io/badge/json-5E5C5C?style=for-the-badge&logo=json&logoColor=white) ![bash](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)![github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white) ![git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
+![PYTHON](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue) ![JSON](https://img.shields.io/badge/json-5E5C5C?style=for-the-badge&logo=json&logoColor=white) ![bash](https://img.shields.io/badge/Shell_Script-121011?style=for-the-badge&logo=gnu-bash&logoColor=white)![git](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)
 
 `B15` is a HTTP compliant TCP socket server and client. The server can accept any HTTP client (including ours of course) and acts as a proxy to [NewsAPI.org](https://newsapi.org/). The client can be used to send requests to the server and receive responses from the server. The client and server are written in Python and some tests are written in shell bash.
 
@@ -25,7 +25,7 @@ Going through the project, you'll find multiple modules that facilitate communic
     - [The `client` directory](#the-client-directory)
   - [Extra Concepts](#extra-concepts)
   - [Authors](#authors)
-    - [Group B15 - Course ITNE352 - Section 2](#group-b15---course-itne352---section-2)
+          - [Group B15 - Course ITNE352 - Section 2](#group-b15---course-itne352---section-2)
 
 ## Running the project
 
@@ -144,7 +144,7 @@ except KeyboardInterrupt:
 
 1. `B15` was built using test driven development, you can see all the shell scripts used to test in the `tests` directory, and use them too!
    1. To use them, run `sudo chmod 777 *` inside the `tests` directory, and then run `./<script-name>`
-2. A `.env` file was used to ensure security of our API key, and is loaded inside the `server.py` script using the `dotenv` module.
+2. A `.env` file was used to ensure security of our API key, and is loaded inside the `server.py` script using the `d
 3. A python `.gitignore` template was used to not push any unimportant scripts
 4. This project adapts to any HTTP client, including `Postman` or `curl`!
    1. You may also build other clients using Js, Go, or anything really 😄
