@@ -1,1 +1,9 @@
-{"client_name": "ab", "option": null, "response_status": "201 Created", "timestamp": "2024-05-26 10:08:56", "response": {"message": "Client Registered"}}
+{
+  "client_name": "ab",
+  "option": null,
+  "response_status": "201 Created",
+  "timestamp": "2024-05-26 10:08:56",
+  "response": {
+    "message": "Client Registered"
+  }
+}
