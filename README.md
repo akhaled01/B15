@@ -4,6 +4,17 @@
 
 `B15` is a HTTP compliant TCP socket server and client. The server can accept any HTTP client (including ours of course) and acts as a proxy to [NewsAPI.org](https://newsapi.org/). The client can be used to send requests to the server and receive responses from the server. The client and server are written in Python and some tests are written in shell bash.
 
+Our project is a quite different due to a multitude of factors, the biggest of which, is that it's compliant with the [HTTP/1.1 RFC](https://https://datatracker.ietf.org/doc/html/rfc2616).
+
+> [!NOTE]
+> `nginx` has inspired the idea of this project!
+
+The hypertext transfer protocol is an application-level protocol for distributed, collaborative, hypermedia information systems. HTTP is the foundation of data communication for the World Wide Web. It is a OSI Layer 7 Protocol built on top of a OSI Layer 4 protocol (TCP).
+
+The idea of this project, is to provide our TCP server socket the ability to accept HTTP clients from any source, and that is done by making it understand the requests, and encode responses in a very specific manner.
+
+Going through the project, you'll find multiple modules that facilitate communication with all client. You'll also find routing utilities that are responsible for multiplexing the requests to the required controller.
+
 ## Table of Content
 
 - [B15](#b15)
@@ -14,7 +25,7 @@
     - [The `client` directory](#the-client-directory)
   - [Extra Concepts](#extra-concepts)
   - [Authors](#authors)
-    - [Group B15 - Course ITNE352 - Section 2](#group-b15---course-itne352---section-2)
+          - [Group B15 - Course ITNE352 - Section 2](#group-b15---course-itne352---section-2)
 
 ## Running the project
 
