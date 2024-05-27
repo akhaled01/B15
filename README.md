@@ -30,7 +30,7 @@ Going through the project, you'll find multiple modules that facilitate communic
 ## Running B15
 
 > [!IMPORTANT]
-> Use a mature Linux distro!
+> Use a mature Linux distro, or WSL if you are on windows!
 
 To run B15, you'll need to have Python 3.11.0 or higher installed on your machine.
 
