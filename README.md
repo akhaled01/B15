@@ -145,7 +145,7 @@ except KeyboardInterrupt:
 
 1. `B15` was built using test driven development, you can see all the shell scripts used to test in the `tests` directory, and use them too!
    1. To use them, run `sudo chmod 777 *` inside the `tests` directory, and then run `./<script-name>`
-2. A `.env` file was used to ensure security of our API key, and is loaded inside the `server.py` script using the `d
+2. A `.env` file was used to ensure security of our API key, and is loaded inside the `server.py` script using the `dotenv` package
 3. A python `.gitignore` template was used to not push any unimportant scripts
 4. B15 server adapts to any HTTP client, including `Postman` or `curl`!
    1. You may also build other clients using Js, Go, or anything really 😄
